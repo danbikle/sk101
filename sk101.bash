@@ -32,4 +32,8 @@ done
 # I should create wide1.csv
 sqlite3 sk101.db '.read /home/ann/sk101/joinem.sql'
 
+# I should predict
+python ~ann/sk101/sk101.py
+
+
 exit
