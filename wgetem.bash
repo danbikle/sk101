@@ -14,7 +14,7 @@ rm -f ${TKR}.csv
 wget --output-document=${TKR}.csv  http://ichart.finance.yahoo.com/table.csv?s=${TKRH}
 cat ${TKR}.csv | awk -F, '{print $1 "," $5}' > ${TKR}2.csv
 
-for TKR in GLD TLT FXI EFA XOM IWM EEM MDY EWJ
+for TKR in XOM MDY
 do
   echo $TKR
   rm -f ${TKR}.html ${TKR}.csv
