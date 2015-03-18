@@ -26,6 +26,8 @@ if len(sys.argv) == 1:
 print(sys.argv[1])
 
 df1  = pd.read_csv(sys.argv[1])
+df1.columns = ['cdate','cp']
+
 cp_a = df1[['cp']].values
 # cp should be a list:
 cp   = [elm[0] for elm in cp_a]
