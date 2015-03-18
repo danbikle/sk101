@@ -74,7 +74,6 @@ train_oos_gap = dofit # train_oos_gap should <= dofit
 for oos_i in range(0,pcount):
   print('Busy with prediction calculation: '+str(oos_i+1))
   x_oos       = x_a[oos_i,:]
-  pdb.set_trace()
   train_start = oos_i+1+train_oos_gap
   train_end   = train_start + train_count
   x_train     = x_a[train_start:train_end]
