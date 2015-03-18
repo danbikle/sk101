@@ -19,6 +19,14 @@ cd       ~ann/sk101/
 mkdir -p /tmp/sk101/
 
 # I should get csv data
-./wgetem.bash
+echo ./wgetem.bash
+
+# I should generate features
+
+for TKR in XOM MDY GSPC
+do
+  python ~ann/sk101/genf.py      ${TKR}2.csv
+  grep -v cdate ftr${TKR}2.csv > ${TKR}3.csv
+done
 
 exit
