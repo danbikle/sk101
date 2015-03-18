@@ -15,7 +15,10 @@ else
   exit 1
 fi
 
+cd       ~ann/sk101/
 mkdir -p /tmp/sk101/
 
+# I should get csv data
+./wgetem.bash
 
 exit
