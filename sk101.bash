@@ -22,7 +22,7 @@ mkdir -p /tmp/sk101/
 echo ./wgetem.bash
 
 # I should generate features
-
+cd /tmp/sk101/
 for TKR in XOM MDY GSPC
 do
   python ~ann/sk101/genf.py      ${TKR}2.csv
