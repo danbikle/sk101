@@ -21,7 +21,7 @@ print('I have this many observations: '+str(obs_count))
 pcount = 10
 
 # I should learn from this many observations:
-train_count = 252 * 6
+train_count = 252 * 10
 
 if pcount + train_count > obs_count:
   print('You need to lower pcount and-or train_count.')
