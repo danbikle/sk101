@@ -18,7 +18,8 @@ obs_count = len(df1)
 print('I have this many observations: '+str(obs_count))
 
 # I should get this many predictions:
-pcount = 10
+pcount = 2390 # Near the max
+pcount = 30
 
 # I should learn from this many observations:
 train_count = 252 * 10
