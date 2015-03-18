@@ -29,4 +29,7 @@ do
   grep -v cdate ftr${TKR}2.csv > ${TKR}3.csv
 done
 
+# I should create wide1.csv
+sqlite3 sk101.db '.read /home/ann/sk101/joinem.sql'
+
 exit
