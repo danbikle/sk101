@@ -8,6 +8,7 @@
 import pandas as pd
 import numpy  as np
 import pdb
+import datetime
 import matplotlib
 # http://matplotlib.org/faq/howto_faq.html#generate-images-without-having-a-window-appear
 matplotlib.use('Agg')
@@ -30,11 +31,17 @@ print(sys.argv[1])
 
 # I should load the csv into a df
 
-df1 = pd.read_csv(sys.argv[1])
-pdb.set_trace()
-df1.head()
+df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
 
-plt.plot(df1['cdate'], df1['cp'], 'b-')
+# matplotlib likes dates:
+plt_date = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
+
+plt_cp   = [row for row in df1['cp']] 
+
+# I dont know the outcome of most recent prediction,
+# so I dont plot the most recent row:
+plt.plot(plt_date[:-1], plt_cp[:-1], 'b-')
+
 plt.savefig('/tmp/myfig')
 plt.close()
 
