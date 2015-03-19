@@ -16,3 +16,7 @@ then
 fi
 
 echo Working...
+
+python /home/ann/sk101/plotem.py $1
+
+exit
