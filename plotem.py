@@ -9,10 +9,6 @@ import pandas as pd
 import numpy  as np
 import pdb
 import datetime
-import matplotlib
-# http://matplotlib.org/faq/howto_faq.html#generate-images-without-having-a-window-appear
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
 # I should check cmd line arg
 import sys
@@ -60,9 +56,13 @@ for delta in delta_l:
   cp_i += 1
 
 # I should plot
-plt.plot(cdate_l, cp_l, 'b-',cdate_l, green_l, 'g-')
-
-pdb.set_trace()
+import matplotlib
+# http://matplotlib.org/faq/howto_faq.html#generate-images-without-having-a-window-appear
+matplotlib.use('Agg')
+# Order is important here.
+# Do not move the next import:
+import matplotlib.pyplot as plt
+plt.plot(cdate_l, cp_l, 'b-', cdate_l, green_l, 'g-')
 plt.savefig(csvf.replace('.csv','')+'.png')
 plt.close()
 
