@@ -36,19 +36,34 @@ df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
 # matplotlib likes dates:
 cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
 cp_l    = [row for row in df1['cp']] 
-
-pdb.set_trace()
 cplead_l = cp_l + [cp_l[-1]]
 cplead_l = cplead_l[1:]
-len(cplead_l) == len(cp_l)
-delta_a = np.array(cplead_l) - np.array(cp_l)
-delta_l = [elm[0] for elm in delta_a]
 
-# I dont know the outcome of most recent prediction,
-# so I dont plot the most recent row:
-plt_date = cdate_l[:-1]
-plt_cp   = cp_l[:-1]
-plt.plot(plt_date, plt_cp, 'b-')
+delta_a = np.array(cplead_l) - np.array(cp_l)
+delta_l = [elm for elm in delta_a]
+
+# I should avoid most recent delta_l since I dont know it yet.
+delta_l   = delta_l[:-1]
+cp_mirror = [cp_l[0]]
+green_l   = [cp_l[0]]
+
+# I should get my predictions
+prediction_l = [prediction for row in df1['prediction']]
+
+# I should work on the green line
+cp_i = 0
+for delta in delta_l:
+  green_pt    = green_l[cp_i]
+  prediction  = prediction_l[cp_i]
+  green_delta = delta * np.sign(prediction)
+  green_l.append(green_pt + green_delta)
+  cp_i += 1
+pdb.set_trace()
+
+len(green_l) == len(cp_l)
+
+# actually I might want this:
+plt.plot(cdate_l, cp_l, 'b-')
 
 plt.savefig('/tmp/myfig')
 plt.close()
