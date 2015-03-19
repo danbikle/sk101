@@ -1,10 +1,10 @@
-# ~ann/sk101/sk101.py
+# ~ann/sk101/sk101svm.py
 
 # This script should learn from wide1.csv and then issue predictions.
 
 # Demo:
 # cd /tmp/sk101/
-# python ~ann/sk101/sk101.py
+# python ~ann/sk101/sk101svm.py
 
 import pdb
 import pandas as pd
@@ -18,7 +18,6 @@ obs_count = len(df1)
 print('I have this many observations: '+str(obs_count))
 
 # I should get this many predictions:
-pcount = 252 * 1
 pcount = 2390 # Near the max
 
 # I should learn from this many observations:
@@ -52,23 +51,12 @@ x_a    = wide_a[:,dow_i:   ]
 y_a    = wide_a[:,pctlead_i]
 
 # Ref:
-
-# http://scikit-learn.org/stable/modules/ensemble.html#regression
-# http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
 # http://scikit-learn.org/stable/modules/svm.html#regression
-
-from sklearn.ensemble  import GradientBoostingRegressor
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn import svm
 
-model1 = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=5, random_state=0, loss='ls')
-model2 = KNeighborsClassifier(n_neighbors=(int(train_count)), weights='distance')
 model4 = svm.SVR()
 
 # I should use a list to save my predictions
-model1_predictions_l = []
-model2_predictions_l = []
-model2_plot_data_l   = []
 model4_predictions_l = []
 
 # I should build a prediction loop from pcount.
@@ -89,37 +77,18 @@ for oos_i in range(0,pcount):
 
   pdate   = wide_a[oos_i,cdate_i]
   if oos_i % dofit == 0:
-    model1.fit(x_train, y_train)
-    model2.fit(x_train, yc_train)
-    model4.fit(x_train, yc_train)
-  m1p     = model1.predict(x_oos)[0]
-  m2p     = model2.predict_proba(x_oos)[0,1]
+    model4.fit(x_train, y_train)
   m4p     = model4.predict(x_oos)[0]
   pctlead = wide_a[oos_i,pctlead_i]
   cp      = wide_a[oos_i,cp_i     ]
-  model1_predictions_l.append([pdate, cp, m1p,     pctlead])
-  model2_predictions_l.append([pdate, cp, m2p,     pctlead])
-  model2_plot_data_l.append(  [pdate, cp, m2p-0.5, pctlead])
   model4_predictions_l.append([pdate, cp, m4p,     pctlead])
 
-prdf1 = pd.DataFrame(model1_predictions_l)
-prdf2 = pd.DataFrame(model2_predictions_l)
-prdf3 = pd.DataFrame(model2_plot_data_l  )
 prdf4 = pd.DataFrame(model4_predictions_l)
-
-prdf1.columns = ['cdate','cp','prediction','actual']
-prdf2.columns = ['cdate','cp','prediction','actual']
-prdf3.columns = ['cdate','cp','prediction','actual']
 prdf4.columns = ['cdate','cp','prediction','actual']
 
 # I should save my work
-prdf1.to_csv('prdf1.csv', float_format='%4.3f', index=False)
-prdf2.to_csv('prdf2.csv', float_format='%4.3f', index=False)
-prdf3.to_csv('prdf3.csv', float_format='%4.3f', index=False)
 prdf4.to_csv('prdf4.csv', float_format='%4.3f', index=False)
-print('I have saved predictions in prdf1.csv')
-print('I have saved predictions in prdf2.csv')
-print('I have saved predictions in prdf3.csv')
 print('I have saved predictions in prdf4.csv')
+
 
 'bye'
