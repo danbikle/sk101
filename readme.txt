@@ -53,7 +53,7 @@ fi
 
 - I should see something like this:
 
-- sk101/sk101screendump.txt
+- https://github.com/danbikle/sk101/blob/master/sk101screendump.txt
 
 - Also I should see interesting png files in /tmp/sk101/
 
