@@ -63,7 +63,7 @@ for delta in delta_l:
 plt.plot(cdate_l, cp_l, 'b-',cdate_l, green_l, 'g-')
 
 pdb.set_trace()
-plt.savefig(csvf+'.png')
+plt.savefig(csvf.replace('.csv','')+'.png')
 plt.close()
 
 'bye'
