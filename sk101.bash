@@ -41,5 +41,7 @@ cd ~ann/sk101/
 # I should plot blue-line-green-line
 python plotem.py /tmp/sk101/prdf1.csv
 python plotem.py /tmp/sk101/prdf3.csv
+python plotem.py /tmp/sk101/prdf4.csv
+python plotem.py /tmp/sk101/prdf5.csv
 
 exit

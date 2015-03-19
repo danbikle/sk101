@@ -20,6 +20,7 @@ print('I have this many observations: '+str(obs_count))
 # I should get this many predictions:
 pcount = 252 * 1
 pcount = 2390 # Near the max
+pcount = 21
 
 # I should learn from this many observations:
 train_count = 252 * 10
@@ -65,6 +66,7 @@ model1 = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_dept
 model2 = KNeighborsClassifier(n_neighbors=(int(train_count)), weights='distance')
 model4 = svm.SVR()
 model5 = linear_model.LinearRegression()
+model6 = linear_model.LogisticRegression()
 
 # I should use a list to save my predictions
 model1_predictions_l = []
@@ -72,6 +74,8 @@ model2_predictions_l = []
 model2_plot_data_l   = []
 model4_predictions_l = []
 model5_predictions_l = []
+model6_predictions_l = []
+model6_plot_data_l   = []
 
 # I should build a prediction loop from pcount.
 # Higher dofit means fewer models means faster loop:
@@ -93,12 +97,14 @@ for oos_i in range(0,pcount):
   if oos_i % dofit == 0:
     model1.fit(x_train, y_train)
     model2.fit(x_train, yc_train)
-    model4.fit(x_train, yc_train)
-    model5.fit(x_train, yc_train)
+    model4.fit(x_train, y_train)
+    model5.fit(x_train, y_train)
+    model6.fit(x_train, yc_train)
   m1p     = model1.predict(x_oos)[0]
   m2p     = model2.predict_proba(x_oos)[0,1]
   m4p     = model4.predict(x_oos)[0]
   m5p     = model5.predict(x_oos)
+  m6p     = model6.predict_proba(x_oos)[0,1]
   pctlead = wide_a[oos_i,pctlead_i]
   cp      = wide_a[oos_i,cp_i     ]
   model1_predictions_l.append([pdate, cp, m1p,     pctlead])
@@ -106,14 +112,18 @@ for oos_i in range(0,pcount):
   model2_plot_data_l.append(  [pdate, cp, m2p-0.5, pctlead])
   model4_predictions_l.append([pdate, cp, m4p,     pctlead])
   model5_predictions_l.append([pdate, cp, m5p,     pctlead])
+  model6_predictions_l.append([pdate, cp, m6p,     pctlead])
+  model6_plot_data_l.append(  [pdate, cp, m6p-0.5, pctlead])
 
 prdf1 = pd.DataFrame(model1_predictions_l)
 prdf2 = pd.DataFrame(model2_predictions_l)
 prdf3 = pd.DataFrame(model2_plot_data_l  )
 prdf4 = pd.DataFrame(model4_predictions_l)
 prdf5 = pd.DataFrame(model5_predictions_l)
+prdf6 = pd.DataFrame(model6_predictions_l)
+prdf7 = pd.DataFrame(model6_plot_data_l  )
 
-for df in [prdf1,prdf1,prdf1,prdf1,prdf5]:
+for df in [prdf1,prdf2,prdf3,prdf4,prdf5,prdf6,prdf7]:
   df.columns = ['cdate','cp','prediction','actual']
 
 # I should save my work
@@ -122,10 +132,14 @@ prdf2.to_csv('prdf2.csv', float_format='%4.3f', index=False)
 prdf3.to_csv('prdf3.csv', float_format='%4.3f', index=False)
 prdf4.to_csv('prdf4.csv', float_format='%4.3f', index=False)
 prdf5.to_csv('prdf5.csv', float_format='%4.3f', index=False)
+prdf6.to_csv('prdf6.csv', float_format='%4.3f', index=False)
+prdf7.to_csv('prdf7.csv', float_format='%4.3f', index=False)
 print('I have saved predictions in prdf1.csv')
 print('I have saved predictions in prdf2.csv')
 print('I have saved predictions in prdf3.csv')
 print('I have saved predictions in prdf4.csv')
 print('I have saved predictions in prdf5.csv')
+print('I have saved predictions in prdf6.csv')
+print('I have saved predictions in prdf7.csv')
 
 'bye'
