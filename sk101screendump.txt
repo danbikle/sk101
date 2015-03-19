@@ -1,0 +1,84 @@
+/home/ann/sk101/sk101screendump.txt
+
+
+dan@pav /home/ann/sk101 $ 
+dan@pav /home/ann/sk101 $ 
+dan@pav /home/ann/sk101 $ ./sk101.bash 
+./sk101.bash is in the correct folder.
+--2015-03-19 18:29:49--  http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC
+Resolving ichart.finance.yahoo.com (ichart.finance.yahoo.com)... 206.190.61.106, 206.190.61.107
+Connecting to ichart.finance.yahoo.com (ichart.finance.yahoo.com)|206.190.61.106|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/csv]
+Saving to: ‘GSPC.csv’
+
+    [  <=>                                  ] 896,737     2.71MB/s   in 0.3s   
+
+2015-03-19 18:29:49 (2.71 MB/s) - ‘GSPC.csv’ saved [896737]
+
+XOM
+--2015-03-19 18:29:49--  http://ichart.finance.yahoo.com/table.csv?s=XOM
+Resolving ichart.finance.yahoo.com (ichart.finance.yahoo.com)... 206.190.61.107, 206.190.61.106
+Connecting to ichart.finance.yahoo.com (ichart.finance.yahoo.com)|206.190.61.107|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/csv]
+Saving to: ‘XOM.csv’
+
+    [ <=>                                   ] 556,876     3.24MB/s   in 0.2s   
+
+2015-03-19 18:29:50 (3.24 MB/s) - ‘XOM.csv’ saved [556876]
+
+MDY
+--2015-03-19 18:29:50--  http://ichart.finance.yahoo.com/table.csv?s=MDY
+Resolving ichart.finance.yahoo.com (ichart.finance.yahoo.com)... 206.190.61.106, 206.190.61.107
+Connecting to ichart.finance.yahoo.com (ichart.finance.yahoo.com)|206.190.61.106|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/csv]
+Saving to: ‘MDY.csv’
+
+    [    <=>                                ] 252,790      308KB/s   in 0.8s   
+
+2015-03-19 18:29:52 (308 KB/s) - ‘MDY.csv’ saved [252790]
+
+hello, from /home/ann/sk101/genf.py
+XOM2.csv
+hello, from /home/ann/sk101/genf.py
+MDY2.csv
+hello, from /home/ann/sk101/genf.py
+GSPC2.csv
+I have this many observations: 4929
+Busy with prediction calculation: 1
+Busy with prediction calculation: 2
+Busy with prediction calculation: 3
+Busy with prediction calculation: 4
+Busy with prediction calculation: 5
+Busy with prediction calculation: 6
+Busy with prediction calculation: 7
+Busy with prediction calculation: 8
+snip...
+Busy with prediction calculation: 247
+Busy with prediction calculation: 248
+Busy with prediction calculation: 249
+Busy with prediction calculation: 250
+Busy with prediction calculation: 251
+Busy with prediction calculation: 252
+I have saved predictions in prdf1.csv
+I have saved predictions in prdf2.csv
+I have saved predictions in prdf3.csv
+I have saved predictions in prdf4.csv
+I have saved predictions in prdf5.csv
+I have saved predictions in prdf6.csv
+I have saved predictions in prdf7.csv
+hello, from plotem.py
+/tmp/sk101/prdf1.csv
+hello, from plotem.py
+/tmp/sk101/prdf3.csv
+hello, from plotem.py
+/tmp/sk101/prdf4.csv
+hello, from plotem.py
+/tmp/sk101/prdf5.csv
+hello, from plotem.py
+/tmp/sk101/prdf7.csv
+dan@pav /home/ann/sk101 $ 
+dan@pav /home/ann/sk101 $ 
+dan@pav /home/ann/sk101 $ 
