@@ -29,8 +29,7 @@ if len(sys.argv) == 1:
 
 print(sys.argv[1])
 
-# I should load the csv into a df
-
+# I should load the csv into a DataFrame
 df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
 
 # matplotlib likes dates:
@@ -63,10 +62,9 @@ pdb.set_trace()
 len(green_l) == len(cp_l)
 
 # actually I might want this:
-plt.plot(cdate_l, cp_l, 'b-')
+plt.plot(cdate_l, cp_l, 'b-',cdate_l, green_l, 'g-')
 
 plt.savefig('/tmp/myfig')
 plt.close()
-
 
 'bye'
