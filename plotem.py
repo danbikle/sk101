@@ -27,10 +27,11 @@ if len(sys.argv) == 1:
   print('Try again. bye.')
   sys.exit()
 
-print(sys.argv[1])
+csvf = sys.argv[1]
+print(csvf)
 
 # I should load the csv into a DataFrame
-df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
+df1 = pd.read_csv(csvf).sort(['cdate'])
 
 # matplotlib likes dates:
 cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
@@ -57,14 +58,12 @@ for delta in delta_l:
   green_delta = delta * np.sign(prediction)
   green_l.append(green_pt + green_delta)
   cp_i += 1
-pdb.set_trace()
 
-len(green_l) == len(cp_l)
-
-# actually I might want this:
+# I should plot
 plt.plot(cdate_l, cp_l, 'b-',cdate_l, green_l, 'g-')
 
-plt.savefig('/tmp/myfig')
+pdb.set_trace()
+plt.savefig(csvf+'.png')
 plt.close()
 
 'bye'
