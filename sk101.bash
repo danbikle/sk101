@@ -23,6 +23,7 @@ mkdir -p /tmp/sk101/
 
 # I should generate features
 cd /tmp/sk101/
+
 for TKR in XOM MDY GSPC
 do
   python ~ann/sk101/genf.py      ${TKR}2.csv
@@ -35,5 +36,10 @@ sqlite3 sk101.db '.read /home/ann/sk101/joinem.sql'
 # I should predict
 python ~ann/sk101/sk101.py
 
+cd ~ann/sk101/
+
+# I should plot blue-line-green-line
+python plotem.py /tmp/sk101/prdf1.csv
+python plotem.py /tmp/sk101/prdf3.csv
 
 exit
