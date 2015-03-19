@@ -88,8 +88,9 @@ for oos_i in range(0,pcount):
   m1p     = model1.predict(x_oos)[0]
   m2p     = model2.predict_proba(x_oos)[0,1]
   pctlead = wide_a[oos_i,pctlead_i]
-  model1_predictions_l.append([pdate, m1p, pctlead])
-  model2_predictions_l.append([pdate, m2p, pctlead])
+  cp      = wide_a[oos_i,cp_i     ]
+  model1_predictions_l.append([pdate, cp, m1p, pctlead])
+  model2_predictions_l.append([pdate, cp, m2p, pctlead])
 
 prdf1 = pd.DataFrame(model1_predictions_l)
 prdf2 = pd.DataFrame(model2_predictions_l)
