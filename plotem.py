@@ -41,6 +41,8 @@ pdb.set_trace()
 cplead_l = cp_l + [cp_l[-1]]
 cplead_l = cplead_l[1:]
 len(cplead_l) == len(cp_l)
+delta_a = np.array(cplead_l) - np.array(cp_l)
+delta_l = [elm[0] for elm in delta_a]
 
 # I dont know the outcome of most recent prediction,
 # so I dont plot the most recent row:
