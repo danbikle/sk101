@@ -34,13 +34,14 @@ print(sys.argv[1])
 df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
 
 # matplotlib likes dates:
-plt_date = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
-
-plt_cp   = [row for row in df1['cp']] 
+cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
+cp_l    = [row for row in df1['cp']] 
 
 # I dont know the outcome of most recent prediction,
 # so I dont plot the most recent row:
-plt.plot(plt_date[:-1], plt_cp[:-1], 'b-')
+plt_date = cdate_l[:-1]
+plt_cp   = cp_l[:-1]
+plt.plot(plt_date, plt_cp, 'b-')
 
 plt.savefig('/tmp/myfig')
 plt.close()
