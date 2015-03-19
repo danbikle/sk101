@@ -19,7 +19,7 @@ cd       ~ann/sk101/
 mkdir -p /tmp/sk101/
 
 # I should get csv data
-echo ./wgetem.bash
+./wgetem.bash
 
 # I should generate features
 cd /tmp/sk101/
