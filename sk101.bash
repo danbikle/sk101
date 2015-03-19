@@ -43,5 +43,6 @@ python plotem.py /tmp/sk101/prdf1.csv
 python plotem.py /tmp/sk101/prdf3.csv
 python plotem.py /tmp/sk101/prdf4.csv
 python plotem.py /tmp/sk101/prdf5.csv
+python plotem.py /tmp/sk101/prdf7.csv
 
 exit

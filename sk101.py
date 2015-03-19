@@ -20,7 +20,6 @@ print('I have this many observations: '+str(obs_count))
 # I should get this many predictions:
 pcount = 252 * 1
 pcount = 2390 # Near the max
-pcount = 21
 
 # I should learn from this many observations:
 train_count = 252 * 10
@@ -98,13 +97,13 @@ for oos_i in range(0,pcount):
     model1.fit(x_train, y_train)
     model2.fit(x_train, yc_train)
     model4.fit(x_train, y_train)
-    model5.fit(x_train, y_train)
+    model5.fit(x_train.astype(float), y_train.astype(float))
     model6.fit(x_train, yc_train)
   m1p     = model1.predict(x_oos)[0]
   m2p     = model2.predict_proba(x_oos)[0,1]
   m4p     = model4.predict(x_oos)[0]
   m5p     = model5.predict(x_oos)
-  m6p     = model6.predict_proba(x_oos)[0,1]
+  m6p     = model6.predict_proba(x_oos.astype(float))[0,1]
   pctlead = wide_a[oos_i,pctlead_i]
   cp      = wide_a[oos_i,cp_i     ]
   model1_predictions_l.append([pdate, cp, m1p,     pctlead])
