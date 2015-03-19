@@ -95,8 +95,8 @@ for oos_i in range(0,pcount):
 prdf1 = pd.DataFrame(model1_predictions_l)
 prdf2 = pd.DataFrame(model2_predictions_l)
 
-prdf1.columns = ['cdate','prediction','actual']
-prdf2.columns = ['cdate','prediction','actual']
+prdf1.columns = ['cdate','cp','prediction','actual']
+prdf2.columns = ['cdate','cp','prediction','actual']
 
 # I should save my work
 prdf1.to_csv('prdf1.csv', float_format='%4.3f', index=False)
