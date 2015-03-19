@@ -48,7 +48,7 @@ cp_mirror = [cp_l[0]]
 green_l   = [cp_l[0]]
 
 # I should get my predictions
-prediction_l = [prediction for row in df1['prediction']]
+prediction_l = [row for row in df1['prediction']]
 
 # I should work on the green line
 cp_i = 0
