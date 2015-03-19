@@ -37,6 +37,11 @@ df1 = pd.read_csv(sys.argv[1]).sort(['cdate'])
 cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in df1['cdate'].values]
 cp_l    = [row for row in df1['cp']] 
 
+pdb.set_trace()
+cplead_l = cp_l + [cp_l[-1]]
+cplead_l = cplead_l[1:]
+len(cplead_l) == len(cp_l)
+
 # I dont know the outcome of most recent prediction,
 # so I dont plot the most recent row:
 plt_date = cdate_l[:-1]
