@@ -34,7 +34,7 @@ The steps I follow to use these files are listed below:
 - I want this syntax in there:
 
 if [ -e ${HOME}/anaconda3/bin ]; then
-  export PATH="/home/dan/anaconda3/bin:$PATH"
+  export PATH="${HOME}/anaconda3/bin:$PATH"
 fi
 
 - Type bash 
